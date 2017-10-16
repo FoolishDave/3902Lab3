@@ -21,7 +21,7 @@ public class CollidableObject : MonoBehaviour {
         CollidableObjects.Add(gameObject);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         bounds = GetComponent<Renderer>().bounds;
         foreach (GameObject colObject in CollidableObjects)
@@ -38,17 +38,15 @@ public class CollidableObject : MonoBehaviour {
                 CollisionDirection direction = GetDirection(bounds, otherCollider.bounds);
                 // "Bump" out of the collider we're encountering.
                 BumpOut(otherCollider.bounds,direction);
-                Debug.Log("Bumped out collision between: " + gameObject.name + " and " + colObject.name);
                 // Apply force to other object and a normal force to ourselves.
                 Vector3 force = new Vector3();
                 // Only apply the force for the direction of the collision. (Because who needs friction?)
                 if (!physics.LockPositionX && (direction == CollisionDirection.Left || direction == CollisionDirection.Right))
-                    force.x = physics.Mass * physics.Velocity.x / Time.deltaTime;
+                    force.x = physics.Mass * physics.Velocity.x / Time.fixedDeltaTime;
                 if (!physics.LockPositionY && (direction == CollisionDirection.Up || direction == CollisionDirection.Down))
-                    force.y = physics.Mass * physics.Velocity.y / Time.deltaTime;
+                    force.y = physics.Mass * physics.Velocity.y / Time.fixedDeltaTime;
                 if (!physics.LockPositionZ && (direction == CollisionDirection.Front || direction == CollisionDirection.Back))
-                    force.z = physics.Mass * physics.Velocity.z / Time.deltaTime;
-                Debug.Log("Applied force: " + force);
+                    force.z = physics.Mass * physics.Velocity.z / Time.fixedDeltaTime;
                 colObject.GetComponent<PhysicsObject>().AddForceAndNormal(force,physics);
             }
         }
@@ -68,11 +66,9 @@ public class CollidableObject : MonoBehaviour {
                 break;
             case CollisionDirection.Left:
                 bumpVector.x = intersectBounds.min.x - bounds.max.x;
-                Debug.Log("left");
                 break;
             case CollisionDirection.Right:
                 bumpVector.x = intersectBounds.max.x - bounds.min.x;
-                Debug.Log("right");
                 break;
             case CollisionDirection.Front:
                 bumpVector.z = intersectBounds.min.z - bounds.max.z;

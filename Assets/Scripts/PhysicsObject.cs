@@ -25,7 +25,7 @@ public class PhysicsObject : MonoBehaviour {
         offender.AddForce(-force);
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         AddForce(GravityDirection * Gravity * Mass);
     }
