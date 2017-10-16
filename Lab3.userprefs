@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{F823AA20-9108-71AA-80A4-56646377C78C}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CollidableObject.cs">
+    <Files>
+      <File FileName="Assets/Scripts/PhysicsObject.cs" Line="7" Column="31" />
+      <File FileName="Assets/TestForces.cs" Line="18" Column="25" />
+      <File FileName="Assets/Scripts/CollidableObject.cs" Line="73" Column="36" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Lab3 PreferredExecutionTarget="Unity.Editor" />
+</Properties>
